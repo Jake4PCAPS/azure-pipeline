@@ -1,0 +1,30 @@
+name: Python application test with Github Actions
+
+# Controls when the workflow will run
+on: [push]
+
+jobs:
+  build:
+    # The type of runner that the job will run on
+    runs-on: ubuntu-latest
+
+    # Steps represent a sequence of tasks that will be executed as part of the job
+    steps:
+      - uses: actions/checkout@v2
+      - name: Set up Python 3.5
+        uses: actions/setup-python@v1
+        with:
+          python-version: 3.5
+
+      # Install python dependencies
+      - name: Install dependencies
+        run: |
+          make install
+      # Runs lint on the code
+      - name: Lint with pylint 
+        run: |
+          make lint
+      # Tests code with pytest
+      - name: Test with pytest
+        run: |
+          make test
