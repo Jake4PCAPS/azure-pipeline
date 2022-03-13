@@ -4,3 +4,4 @@ scikit-learn==0.20.3
 markupsafe==2.0.1
 pylint
 pytest
+locust
