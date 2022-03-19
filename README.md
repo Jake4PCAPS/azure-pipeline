@@ -30,16 +30,16 @@ This project will demonstrate how to build a CI/CD pipeline utilizing Azure Clou
 * Create & Activate a Python Virtual Environment (Choose your own name and directory)
 
 ```bash
-udacity@Azure:~$ python3 -m venv ~/.test
-udacity@Azure:~$ source ~/.test/bin/activate
-(.test) udacity@Azure:~$ 
+example@Azure:~$ python3 -m venv ~/.test
+example@Azure:~$ source ~/.test/bin/activate
+(.test) example@Azure:~$ 
 ```
 
 
 ### Run Local test
 * Run the Makefile
 ```bash
-udacity@Azure:~$ make all
+example@Azure:~$ make all
 ```
 * Example of Passing Tests
 ![image](https://user-images.githubusercontent.com/89496176/159138090-b24bed2c-8610-4bfa-8032-135694bd9027.png)
@@ -48,7 +48,7 @@ udacity@Azure:~$ make all
 ### Setup Github Actions
 * Under Actions tab in the GitHub repository, select **set up a workflow yourself**
 ![image](https://user-images.githubusercontent.com/89496176/159138274-e6302440-a224-4139-a476-76e9804c5f80.png)
-* Edit the pythonapp.yml file with the following 
+* Edit the **pythonapp.yml** file with the following and **Start Commit** to the repo
 ```
 name: Python application test with Github Actions
 
@@ -75,6 +75,7 @@ jobs:
       run: |
         make test
 ```
+
 * Validate the remote tests pass
 ![image](https://user-images.githubusercontent.com/89496176/159138359-79b3f663-f049-4277-a4c2-49c5b16ddac0.png)
 
@@ -82,22 +83,31 @@ jobs:
 
 ### Deploy Flask ML Web App
 * Create a webapp service in Azure Cloud Shell:
-az webapp up -n <your-appservice>
-* Validate the deployed application is working by accessing it from a web browser and inspecting the logs
-https://<your-appservice>.azurewebsites.net/
 ```bash
-udacity@Azure:~$ az webapp log tail
+example@Azure:~$ az webapp up -n <your-appservice>
 ```
-* Edit the line in the make_predict_azure_app.sh to match the app name
--X POST https://<yourappname>.azurewebsites.net:$PORT/predict
+* Validate the deployed application is working by accessing it from a web browser and inspecting the app service logs
+![image](https://user-images.githubusercontent.com/89496176/159138982-76eeb19c-492c-42e9-bb0d-bce7ce4d23d2.png)
+
+![image](https://user-images.githubusercontent.com/89496176/159139007-ba412cce-ee81-4267-a804-b39779df7327.png)
+
+```bash
+example@Azure:~$ az webapp log tail
+```
+* Edit the following line in the **make_predict_azure_app.sh** file to match the web app name
+![image](https://user-images.githubusercontent.com/89496176/159138930-01dcc042-95cd-44f3-a907-79c38c4ad46f.png)
 * Sucessful prediction Output
-screen shot
+```bash
+example@Azure:~$ ./make_predict_azure_app.sh
+Port: 443
+{"prediction":[20.35373177134412]}
+```
 
 
  ### Continious Deliver using Azure Pipelines and Azure App service
 * Integrate [Azure Pipelines and GitHub](https://docs.microsoft.com/en-us/azure/devops/pipelines/repos/github?view=azure-devops&tabs=yaml)
 * Create an new Azure DevOps Project and establish Azure connection
-Follow [Azure DevOps] (https://docs.microsoft.com/en-us/azure/devops/pipelines/ecosystems/python-webapp?view=azure-devops#create-an-azure-devops-project-and-connect-to-azure)
+Follow [Azure DevOps](https://docs.microsoft.com/en-us/azure/devops/pipelines/ecosystems/python-webapp?view=azure-devops#create-an-azure-devops-project-and-connect-to-azure)
 * Test the deployment by editing the app.py home function
 screen shot
 
