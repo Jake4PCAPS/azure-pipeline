@@ -1,5 +1,92 @@
 # Overview
 
+This project will demonstrate how to build a CI/CD pipeline utilizing Azure Cloud shell, GitHub, GitHub Actions and Azure Pipeline from the Azure DevOps services.
+
+## Project Plan
+
+* [Project Trello Board.] (https://trello.com/b/utPUpbKs/azure-webapp-pipeline)
+* A link to a spreadsheet that includes the original and final project plan>
+
+## Instructions
+![Azure Pipeline](https://user-images.githubusercontent.com/89496176/159104344-83559ddd-c537-4ccd-9bc0-603344079cf7.jpg)
+
+* Dependencies
+1. Create an [Azure Account](https://portal.azure.com)
+2. Install the [Azure command line interface](https://docs.microsoft.com/en-us/cli/azure/install-azure-cli?view=azure-cli-latest)
+3. Create [GitHub Account](https://docs.github.com/en/get-started/signing-up-for-github/signing-up-for-a-new-github-account)
+4. Create [Azure DevOps Account](https://azure.microsoft.com/en-us/services/devops/)
+
+* Setup Cloud-based Deployment Environment
+1. Fork [GitHub Repo] (https://github.com/Jake4PCAPS/azure-pipeline)
+2. Integrate Azure Cloud Shell with GitHub
+Generate [SSH Key] (https://docs.github.com/en/authentication/connecting-to-github-with-ssh/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent)
+Add [SSH Key to GitHub Account] (https://docs.github.com/en/authentication/connecting-to-github-with-ssh/adding-a-new-ssh-key-to-your-github-account)
+3. Clone GitHub Repo to a directory in Azure Cloud shell
+screen shot here
+
+* Setup the Project Scaffolding
+1. Makefile
+2. Create & Activate a Python Virtual Environment
+screen shot here
+
+3. Run Local test
+Run the command make all
+screen shot results
+
+* Setup Github Actions
+1. Under Actions tab in the GitHub repository, select "set up a workflow yourself"
+insert screenshot
+2. Edit the pythonapp.yml file with the following ```
+name: Python application test with Github Actions
+
+on: [push]
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: Set up Python 3.5
+      uses: actions/setup-python@v1
+      with:
+        python-version: 3.5
+    - name: Install dependencies
+      run: |
+        make install
+    - name: Lint with pylint
+      run: |
+        make lint
+    - name: Test with pytest
+      run: |
+        make test
+```
+3. Validate the remote tests pass
+insert screen short
+
+* Deploy Flask ML Web App
+1. Create a webapp service in Azure Cloud Shell:
+az webapp up -n <your-appservice>
+2. Validate the deployed application is working by accessing it from a web browser and inspecting the logs
+https://<your-appservice>.azurewebsites.net/
+```bash
+udacity@Azure:~$ az webapp log tail
+```
+3. Edit the line in the make_predict_azure_app.sh to match the app name
+-X POST https://<yourappname>.azurewebsites.net:$PORT/predict
+4. Sucessful prediction Output
+screen shot
+
+* Continious Deliver using Azure Pipelines and Azure App service
+1. Integrate [Azure Pipelines and GitHub](https://docs.microsoft.com/en-us/azure/devops/pipelines/repos/github?view=azure-devops&tabs=yaml)
+2. Create an new Azure DevOps Project and establish Azure connection
+Follow [Azure DevOps] (https://docs.microsoft.com/en-us/azure/devops/pipelines/ecosystems/python-webapp?view=azure-devops#create-an-azure-devops-project-and-connect-to-azure)
+3. Test the deployment by editing the app.py home function
+screen shot
+
+# Overview
+
 <TODO: complete this with an overview of your project>
 
 ## Project Plan
