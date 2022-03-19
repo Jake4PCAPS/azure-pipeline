@@ -18,28 +18,36 @@ This project will demonstrate how to build a CI/CD pipeline utilizing Azure Clou
 
 
 ### Setup Cloud-based Deployment Environment
-* Fork [GitHub Repo] (https://github.com/Jake4PCAPS/azure-pipeline)
+* Fork Start File [GitHub Repo](https://github.com/Jake4PCAPS/azure-pipeline)
 * Integrate Azure Cloud Shell with GitHub
-Generate [SSH Key] (https://docs.github.com/en/authentication/connecting-to-github-with-ssh/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent)
-Add [SSH Key to GitHub Account] (https://docs.github.com/en/authentication/connecting-to-github-with-ssh/adding-a-new-ssh-key-to-your-github-account)
-* Clone GitHub Repo to a directory in Azure Cloud shell
-screen shot here
-
+⋅⋅1. Azure Cloud Shell [Generate SSH Key](https://docs.github.com/en/authentication/connecting-to-github-with-ssh/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent)
+⋅⋅2. Add [SSH Key to GitHub Account](https://docs.github.com/en/authentication/connecting-to-github-with-ssh/adding-a-new-ssh-key-to-your-github-account)
+* Clone GitHub to Azure Cloud Shell (Use URL to your GitHub Repo)
+![image](https://user-images.githubusercontent.com/89496176/159137779-4e7fa523-bf31-4e9a-985d-ad3b2bdec24e.png)
 
 ### Setup the Project Scaffolding
 * Makefile
-* Create & Activate a Python Virtual Environment
-screen shot here
+* Create & Activate a Python Virtual Environment (Choose your own name and directory)
+
+```bash
+udacity@Azure:~$ python3 -m venv ~/.test
+udacity@Azure:~$ source ~/.test/bin/activate
+(.test) udacity@Azure:~$ 
+```
 
 
 ### Run Local test
-Run the command make all
-screen shot results
+* Run the Makefile
+```bash
+udacity@Azure:~$ make all
+```
+* Example of Passing Tests
+![image](https://user-images.githubusercontent.com/89496176/159138090-b24bed2c-8610-4bfa-8032-135694bd9027.png)
 
 
 ### Setup Github Actions
-* Under Actions tab in the GitHub repository, select "set up a workflow yourself"
-insert screenshot
+* Under Actions tab in the GitHub repository, select **set up a workflow yourself**
+![image](https://user-images.githubusercontent.com/89496176/159138274-e6302440-a224-4139-a476-76e9804c5f80.png)
 * Edit the pythonapp.yml file with the following 
 ```
 name: Python application test with Github Actions
@@ -68,8 +76,9 @@ jobs:
         make test
 ```
 * Validate the remote tests pass
-insert screen short
+![image](https://user-images.githubusercontent.com/89496176/159138359-79b3f663-f049-4277-a4c2-49c5b16ddac0.png)
 
+[![Python application test with Github Actions](https://github.com/Jake4PCAPS/azure-pipeline/actions/workflows/pythonapp.yml/badge.svg)](https://github.com/Jake4PCAPS/azure-pipeline/actions/workflows/pythonapp.yml)
 
 ### Deploy Flask ML Web App
 * Create a webapp service in Azure Cloud Shell:
