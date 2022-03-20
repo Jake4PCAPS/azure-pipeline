@@ -4,7 +4,7 @@ This project will demonstrate how to build a CI/CD pipeline utilizing Azure Clou
 
 
 ## Project Plan
-* [Project Trello Board](https://trello.com/invite/b/utPUpbKs/4de71565c462e1ecd9979226163da45b/azure-webapp-pipeline)
+* [Project Trello Board](https://trello.com/b/utPUpbKs/azure-webapp-pipeline)
 * [Project Plan Spreadsheet](https://docs.google.com/spreadsheets/d/1YxOxBlr8zrpXSzDh7PlDraRNqhwDD2ab5f9H8kcbaOg/edit?usp=sharing)
 
 
