@@ -103,6 +103,12 @@ example@Azure:~$ az webapp log tail
 2022-03-20T00:26:17.406Z INFO  - Container site example-app_7_16806125 for site site example-app initialized successfully and is ready to serve requests.
 ```
 
+* Running load test with Locust
+	
+![image](https://user-images.githubusercontent.com/89496176/159144251-4663b344-689e-4772-aecd-7d4d2f9883b6.png)
+
+
+
 ### Validate the Flask ML Web App with **Make Predict** script
 * Edit the following line in the **make_predict_azure_app.sh** file to match the web app name
 ![image](https://user-images.githubusercontent.com/89496176/159138930-01dcc042-95cd-44f3-a907-79c38c4ad46f.png)
