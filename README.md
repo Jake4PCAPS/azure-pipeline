@@ -89,6 +89,7 @@ example@Azure:~$ az webapp up -n <your-appservice>
 ![image](https://user-images.githubusercontent.com/89496176/159143393-968232d8-171d-4d4e-a2a6-e92969ce978f.png)
 
 * Validate the deployed application is working by accessing it from a web browser and inspecting the app service logs
+
 ![image](https://user-images.githubusercontent.com/89496176/159138982-76eeb19c-492c-42e9-bb0d-bce7ce4d23d2.png)
 
  ![image](https://user-images.githubusercontent.com/89496176/159139007-ba412cce-ee81-4267-a804-b39779df7327.png)
