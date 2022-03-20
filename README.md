@@ -2,9 +2,11 @@
 
 This project will demonstrate how to build a CI/CD pipeline utilizing Azure Cloud shell, GitHub, GitHub Actions and Azure Pipeline from the Azure DevOps services.
 
+
 ## Project Plan
 * [Project Trello Board](https://trello.com/invite/b/utPUpbKs/4de71565c462e1ecd9979226163da45b/azure-webapp-pipeline)
 * [Project Plan Spreadsheet](https://docs.google.com/spreadsheets/d/1YxOxBlr8zrpXSzDh7PlDraRNqhwDD2ab5f9H8kcbaOg/edit?usp=sharing)
+
 
 ## Instructions
 ![Azure Pipeline](https://user-images.githubusercontent.com/89496176/159104344-83559ddd-c537-4ccd-9bc0-603344079cf7.jpg)
@@ -24,6 +26,7 @@ This project will demonstrate how to build a CI/CD pipeline utilizing Azure Clou
 ⋅⋅2. Add [SSH Key to GitHub Account](https://docs.github.com/en/authentication/connecting-to-github-with-ssh/adding-a-new-ssh-key-to-your-github-account)
 * Clone GitHub to Azure Cloud Shell (Use URL to your GitHub Repo)
 ![image](https://user-images.githubusercontent.com/89496176/159137779-4e7fa523-bf31-4e9a-985d-ad3b2bdec24e.png)
+
 
 ### Setup the Project Scaffolding
 * Makefile
@@ -81,6 +84,7 @@ jobs:
 
 [![Python application test with Github Actions](https://github.com/Jake4PCAPS/azure-pipeline/actions/workflows/pythonapp.yml/badge.svg)](https://github.com/Jake4PCAPS/azure-pipeline/actions/workflows/pythonapp.yml)
 
+
 ### Deploy Flask ML Web App
 * Create a webapp service in Azure Cloud Shell:
 ```bash
@@ -108,7 +112,6 @@ example@Azure:~$ az webapp log tail
 ![image](https://user-images.githubusercontent.com/89496176/159144251-4663b344-689e-4772-aecd-7d4d2f9883b6.png)
 
 
-
 ### Validate the Flask ML Web App with **Make Predict** script
 * Edit the following line in the **make_predict_azure_app.sh** file to match the web app name
 ![image](https://user-images.githubusercontent.com/89496176/159138930-01dcc042-95cd-44f3-a907-79c38c4ad46f.png)
@@ -120,7 +123,7 @@ Port: 443
 ```
 
 
- ### Continious Deliver using Azure Pipelines and Azure App service
+### Continious Deliver using Azure Pipelines and Azure App service
 * Integrate [Azure Pipelines and GitHub](https://docs.microsoft.com/en-us/azure/devops/pipelines/repos/github?view=azure-devops&tabs=yaml)
 * Create an new Azure DevOps Project and establish Azure connection
 Follow [Azure DevOps](https://docs.microsoft.com/en-us/azure/devops/pipelines/ecosystems/python-webapp?view=azure-devops#create-an-azure-devops-project-and-connect-to-azure)
@@ -150,6 +153,11 @@ example@Azure:~$ git push
 * Add new pytest tests in the Makefile 
 * Use GitHub Actions for continious deliver instead of Azure Pipelines
 
+
 ## Demo 
 
-[Video Demo](https://youtu.be/NqXMLn6dLDQ)
+<a href="http://www.youtube.com/watch?feature=player_embedded&v=NqXMLn6dLDQ
+" target="https://youtu.be/NqXMLn6dLDQ"><img src="http://img.youtube.com/vi/NqXMLn6dLDQ/0.jpg" 
+alt="IMAGE ALT TEXT HERE" width="240" height="180" border="10" /></a>
+
+
