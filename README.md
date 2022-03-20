@@ -4,7 +4,7 @@ This project will demonstrate how to build a CI/CD pipeline utilizing Azure Clou
 
 ## Project Plan
 * [Project Trello Board](https://trello.com/b/utPUpbKs/azure-webapp-pipeline)
-* A link to a spreadsheet that includes the original and final project plan>
+* [Project Plan Spreadsheet](https://docs.google.com/spreadsheets/d/1YxOxBlr8zrpXSzDh7PlDraRNqhwDD2ab5f9H8kcbaOg/edit?usp=sharing)
 
 ## Instructions
 ![Azure Pipeline](https://user-images.githubusercontent.com/89496176/159104344-83559ddd-c537-4ccd-9bc0-603344079cf7.jpg)
@@ -86,14 +86,30 @@ jobs:
 ```bash
 example@Azure:~$ az webapp up -n <your-appservice>
 ```
+![image](https://user-images.githubusercontent.com/89496176/159143393-968232d8-171d-4d4e-a2a6-e92969ce978f.png)
+
 * Validate the deployed application is working by accessing it from a web browser and inspecting the app service logs
+
 ![image](https://user-images.githubusercontent.com/89496176/159138982-76eeb19c-492c-42e9-bb0d-bce7ce4d23d2.png)
 
-![image](https://user-images.githubusercontent.com/89496176/159139007-ba412cce-ee81-4267-a804-b39779df7327.png)
+ ![image](https://user-images.githubusercontent.com/89496176/159139007-ba412cce-ee81-4267-a804-b39779df7327.png)
 
+* Checking Log File
 ```bash
 example@Azure:~$ az webapp log tail
+2022-03-20T00:26:00.061Z INFO  - Initiating warmup request to container project2
+-pipeline-app_7_16806125 for site example-app
+
+2022-03-20T00:26:17.406Z INFO  - Container site example-app_7_16806125 for site site example-app initialized successfully and is ready to serve requests.
 ```
+
+* Running load test with Locust
+	
+![image](https://user-images.githubusercontent.com/89496176/159144251-4663b344-689e-4772-aecd-7d4d2f9883b6.png)
+
+
+
+### Validate the Flask ML Web App with **Make Predict** script
 * Edit the following line in the **make_predict_azure_app.sh** file to match the web app name
 ![image](https://user-images.githubusercontent.com/89496176/159138930-01dcc042-95cd-44f3-a907-79c38c4ad46f.png)
 * Sucessful prediction Output
@@ -108,51 +124,32 @@ Port: 443
 * Integrate [Azure Pipelines and GitHub](https://docs.microsoft.com/en-us/azure/devops/pipelines/repos/github?view=azure-devops&tabs=yaml)
 * Create an new Azure DevOps Project and establish Azure connection
 Follow [Azure DevOps](https://docs.microsoft.com/en-us/azure/devops/pipelines/ecosystems/python-webapp?view=azure-devops#create-an-azure-devops-project-and-connect-to-azure)
-* Test the deployment by editing the app.py home function
-screen shot
-
-## Instructions
-
-<TODO:  
-* Architectural Diagram (Shows how key parts of the system work)>
-
-<TODO:  Instructions for running the Python project.  How could a user with no context run this project without asking you for any help.  Include screenshots with explicit steps to create that work. Be sure to at least include the following screenshots:
-
-* Project running on Azure App Service
-
-* Project cloned into Azure Cloud Shell
-
-* Passing tests that are displayed after running the `make all` command from the `Makefile`
-
-* Output of a test run
-
-* Successful deploy of the project in Azure Pipelines.  [Note the official documentation should be referred to and double checked as you setup CI/CD](https://docs.microsoft.com/en-us/azure/devops/pipelines/ecosystems/python-webapp?view=azure-devops).
-
-* Running Azure App Service from Azure Pipelines automatic deployment
-
-* Successful prediction from deployed flask app in Azure Cloud Shell.  [Use this file as a template for the deployed prediction](https://github.com/udacity/nd082-Azure-Cloud-DevOps-Starter-Code/blob/master/C2-AgileDevelopmentwithAzure/project/starter_files/flask-sklearn/make_predict_azure_app.sh).
-The output should look similar to this:
-
-```bash
-udacity@Azure:~$ ./make_predict_azure_app.sh
-Port: 443
-{"prediction":[20.35373177134412]}
+* Test the Azure pipeline by adding text to HTML heading in the **app.py** home function in Azure Cloud Shell
+```python
+@app.route("/")
+def home():
+    html = "<h3>Sklearn Prediction Home</h3>"
+    return html.format(format)
 ```
+* Commit edited file in Git and push the change to GitHub
+```bash
+example@Azure:~$ git add app.py
+example@Azure:~$ git commit
+example@Azure:~$ git push
+```
+* In Azure Pipeline under the **Run** tab, validate the job completes successfully
+![image](https://user-images.githubusercontent.com/89496176/159143056-366ff6c1-a52c-4313-be0b-c193502e615b.png)
 
-* Output of streamed log files from deployed application
+* Validate the Web App site is displaying the new text
 
-> 
+![image](https://user-images.githubusercontent.com/89496176/159143220-c633f8f6-cc18-4452-a501-7da127ae9095.png)
+
 
 ## Enhancements
 
-<TODO: A short description of how to improve the project in the future>
+* Add new pytest tests in the Makefile 
+* Use GitHub Actions for continious deliver instead of Azure Pipelines
 
 ## Demo 
 
 <TODO: Add link Screencast on YouTube>
-
-# Passing GitHub Actions Build
-![image](https://user-images.githubusercontent.com/89496176/158027589-48a6dab7-f8f7-43c5-bfa2-31a030de7ff2.png)
-
-
-[![Python application test with Github Actions](https://github.com/Jake4PCAPS/azure-pipeline/actions/workflows/pythonapp.yml/badge.svg)](https://github.com/Jake4PCAPS/azure-pipeline/actions/workflows/pythonapp.yml)
